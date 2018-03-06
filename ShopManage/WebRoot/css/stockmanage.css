@@ -1,0 +1,62 @@
+body{
+	background-image: url(../image/stockmanage.jpg);
+	background-size:100% 100%;
+	background-repeat:no-repeat;	
+}
+
+.my-backgroundImg{
+	width:100%;
+	height:100%;
+	background-size: 100% 100%;
+	margin:0 auto;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.my-header{
+	width:100%;
+}
+.my-container{
+	background-color:white;
+	opacity:0.8;
+}
+
+.my-top{
+	margin-top:1%;
+	height:10%;
+	width:100%;
+	border:1px solid gray;
+	text-align:center;
+}
+
+.my-row{
+	margin-left:0px;
+	margin-right:0px;
+	
+}
+.row li{
+	
+	height:10%;
+	display:inline-block;
+	text-align:center;
+	padding-top:10px;
+}
+.row li:hover{
+	cursor:pointer;
+}
+.my-mainbody{
+	width:100%;
+	height:80%;
+	border:1px solid gray;
+	margin-top:1%;
+}
+.my-a-active{
+	font-size:20px;
+	color:green !important;
+}
+
+@media screen and (max-width:450px){
+	.my-container{
+		display:none;
+	}
+}

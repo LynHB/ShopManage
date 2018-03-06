@@ -1,0 +1,83 @@
+.bodyer_right_external_div{
+	height:500px;
+	width:938px;
+	font-size:15px;	
+	background-color:white;
+}
+.bodyer_right_title{
+	height:100px;
+	width:100%;
+	font-size:30px;
+	margin-top:20px;
+	line-height:100px;
+}
+
+.menuLeftDiv{
+	height:500px;
+	width:297px;
+	border:0.5px solid gray;
+	font-size:0px;
+	display:inline-block;
+	vertical-align: top;
+}
+.menuRightDiv{
+	display:inline-block;
+	height:500px;
+	width:600px;
+	vertical-align: top;
+	font-size:12px;
+	text-align:center;
+}
+
+.menuBottomOne,.menuBottomTwo,.menuBottomThree{
+	display:inline-block;
+	width:99px;
+	height:500px;
+	line-height:50px;
+	font-size:0px;
+	vertical-align: top;
+	position:relative;
+}
+.menuBottom1{
+	width:99px;
+	height:50px;
+	line-height:50px;
+	font-size:12px;
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	text-align:center;
+	border:0.5px solid gray;
+}
+.menuBottom2{
+	width:99px;
+	height:50px;
+	line-height:50px;
+	font-size:12px;
+	position:absolute;
+	left:0px;
+	top:auto;
+	text-align:center;
+	border:0.5px solid gray;
+}
+
+.textareaJson{
+	outline:none;
+	resize:none;
+	width:600px;
+	height:250px;
+	padding-left:20px;
+	padding-top:20px;
+	font-size:18px;
+}
+
+.inputJson{
+	width:500px;
+	height:30px;
+	font-size:15px;
+	line-height:30px;
+	text-align:center;
+	margin:0 auto;
+	margin-top:50px;
+
+}

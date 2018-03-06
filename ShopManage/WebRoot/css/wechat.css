@@ -1,0 +1,115 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+.bodyer_left{
+	background-color:gray;
+	padding-top:10px;
+	width:250px;
+	height:1000px;
+	vertical-align: top;
+	display: inline-block;
+	text-align: center;
+	background-color:#F6F8F9;
+}
+.bodyer_right{
+	width:938px;
+	height:1000px;
+	margin:0 auto;
+	vertical-align: top;
+	display: inline-block;
+	background-color:#F6F8F9;
+	
+}
+.left_commonPage{
+	height:40px;
+	width:200px;
+	background-color:#F6F8F9;
+	font-size:20px;
+	margin:0 auto;
+	display: inline-block;
+	text-align:left;
+	border-bottom:solid #cccccc;
+	border-bottom-width:1px;
+}
+.left_commonPage p{
+	display: inline-block;
+	vertical-align: top;
+	line-height:40px;
+	color:black;
+	
+}
+.left_homePage:before{
+	height:40px;
+	width:40px;
+	background-image: url(../image/wechat/title.png);
+	background-size:100% 100%;
+	background-repeat:no-repeat;
+	display: inline-block;
+	content:"";
+	vertical-align: top;
+	margin-right:50px;
+}
+.left_tool:before{
+	height:40px;
+	width:40px;
+	background-image: url(../image/wechat/tool.png);
+	background-size:100% 100%;
+	background-repeat:no-repeat;
+	display: inline-block;
+	content:"";
+	vertical-align: top;
+	margin-right:50px;
+}
+.left_commonPage:hover{
+	cursor:pointer;
+	background-color:#dddddd;
+}
+.left_commonFun{
+	height:40px;
+	width:200px;
+	background-color:#F6F8F9;
+	font-size:15px;
+	margin:0 auto;
+	display: inline-block;
+	text-align:center;
+}
+.left_commonFun_p{
+	display: inline-block;
+	vertical-align: top;
+	line-height:40px;
+	color:black;
+}
+.left_commonFun:hover{
+	cursor:pointer;
+	background-color:#dddddd;
+}
+.left_config:before{
+	height:40px;
+	width:40px;
+	background-image: url(../image/wechat/config.png);
+	background-size:100% 100%;
+	background-repeat:no-repeat;
+	display: inline-block;
+	content:"";
+	vertical-align: top;
+	margin-right:50px;
+}
+.return_menu{
+	position:fixed;
+	left:50px;
+	top:500px;
+	width:100px;
+	height:50px;
+	display:inline-block;
+	border:1px solid gray;
+	font-size:12px;
+	line-height:50px;
+	text-align:center;
+}
+.return_menu:hover{
+	cursor:pointer;
+	background-color:green;
+	color:white;
+}

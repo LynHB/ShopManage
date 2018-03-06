@@ -1,0 +1,397 @@
+.bodyer_right_external_div{
+	height:500px;
+	width:938px;
+	font-size:15px;	
+	background-color:white;
+	margin-top:10px;
+	overflow:scroll;
+	 overflow-x:hidden;
+}
+.bodyer_right_external_follow_div,.bodyer_right_external_event_div{
+	height:500px;
+	width:938px;
+	font-size:15px;	
+	background-color:white;
+	margin-top:10px;
+	text-align:center;
+}
+.bodyer_right_title{
+	height:100px;
+	width:100%;
+	font-size:30px;
+	margin-top:20px;
+	line-height:100px;
+}
+.title_choose{
+	font-size:15px;
+	display:inline-block;
+	width:150px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+}
+.title_choose:hover{
+	cursor:pointer;
+	color:green !important;
+}
+.title_choose_div{
+	width:100%;
+	height:31px;
+	border-bottom:1px solid #cccccc;
+}
+.keywordReply_content,.keywordReply_event_content{
+	width:800px;
+	font-size:0px;
+	margin:0 auto;
+}
+.search_input,.search_event_input{
+	font-size:12px;
+	height:30px;
+	width:300px;
+	margin-top:50px;
+	display:inline-block;
+	padding-right:50px;
+	border:2px solid #cccccc;
+	outline:none;
+	color:gray;
+	border-radius:15px;
+	padding-left:50px;
+}
+.search_button,.search_event_button{
+	display:inline-block;
+	vertical-align: top;
+	height:30px;
+	width:30px;
+	margin-top:50px;
+	margin-left:-36px;
+	background-image: url(image/wechat/search.png);
+	background-size:100% 100%;
+}
+.search_button:hover,.search_event_button:hover{
+	cursor:pointer;
+}
+.div_create_keywordReply,.div_create_event_keywordReply{
+	display:inline-block;
+	border-radius:5px;
+	width:100px;
+	height:25px;
+	background-color:green;
+	text-align:center;
+	font-size:12px;
+	line-height:25px;
+	color:white;
+	margin-left:300px;
+}
+
+.div_create_keywordReply:hover,.div_create_event_keywordReply:hover{
+	color:#cccccc;
+	cursor:pointer;
+}
+
+.div_keywordReply,.div_event_keywordReply{
+	margin-top:50px;
+}
+.ul_keywordReply_title,.ul_event_keywordReply_title{
+	background-color:#F6F8F9;
+}
+.div_keywordReply ul li,.div_event_keywordReply ul li{
+	list-style:none;
+	display:inline-block;
+	width:186px;
+	height:60px;
+	line-height:60px;
+	padding-left:10px;
+}
+.keywordReplay_create{
+	height:400px;
+	background-color:white;
+}
+
+.keywordReplay_createP{
+	display:inline-block;
+	font-size:15px;
+	margin-top:50px;
+	width:60px;
+}
+.keywrodReply_ruleNameInput{
+	margin-top:50px;
+	display:inline-block;
+	height:40px;
+	width:600px;
+	margin-left:50px;
+	font-size:15px;
+	padding-left:50px;
+}
+.keywordReply_ruleNameExplain{
+	margin-top:10px;
+	color:gray;
+	font-size:15px;
+	
+}
+
+.keywordReply_keywordP{
+	display:inline-block;
+	font-size:15px;
+	
+	
+}
+.keywordReply_keywordChoose{
+	display:inline-block;
+	margin-left:50px;
+	height:40px;
+	width:100px;
+}
+.keywordReply_keywordChoose:hover{
+}
+option:hover{
+	color:green;
+}
+.keywordReply_keywordInput{
+	display:inline-block;
+	margin-top:50px;
+	height:40px;
+	width:500px;
+}
+.keywordReply_message{
+	height:40px;
+	width:60px;
+	font-size:12px;
+	display:inline-block;
+	margin-left:50px;
+	border:1px solid #cccccc;
+	line-height:40px;
+	text-align:center;
+}
+.keywordReply_message:hover{
+	color:green;
+	border:1px solid green;
+	cursor:pointer;
+}
+.keywordReply_submit{
+	display:inline-block;
+	font-size:15px;
+	width:100px;
+	height:40px;
+	border:1px solid #cccccc;
+	background-color:white;
+	border-radius:5px;
+	color:#cccccc;
+	vertical-align: top;
+	text-align:center;
+	line-height:40px;
+	margin-top:50px;
+}
+
+.keywordReply_save{
+	margin-left:200px;
+}
+
+.keywordReply_cancel{
+	margin-left:200px;
+}
+.keywordReply_submit:hover{
+	color:green;
+	cursor:pointer;
+	border:1px solid green;
+}
+.mask{
+	display:none;
+	background-color:gray;
+	opacity:0.5;
+	position:fixed;
+	left:0px;
+	top:0px;
+}
+.keywordReplyTextMessageMaskDiv,.keywordReplyImageMessageMaskDiv,.keywordReplyVideoMessageMaskDiv,.keywordReplyNewsMessageMaskDiv{
+	background-color:white;
+	display:none;
+	position:fixed;
+	width:800px;
+	height:500px;
+	border-radius:5px;
+	font-size:15px;
+	text-align:center;
+}
+.keywordReplyTextMessageMaskDiv_createWord,.keywordReplyImageMessageMaskDiv_createWord,.keywordReplyVideoMessageMaskDiv_createWord,
+.keywordReplyNewsMessageMaskDiv_createWord{
+	text-align:left;
+	margin-top:30px;
+	margin-left:40px;
+	font-size:20px;
+	display:inline-block;
+	height:30px;
+	width:690px;
+	line-height:30px;
+	color:gray;
+	
+}
+.keywordReplyTextMessageMaskDiv_fork,.keywordReplyImageMessageMaskDiv_fork,.keywordReplyVideoMessageMaskDiv_fork,
+.keywordReplyNewsMessageMaskDiv_fork{
+	margin-top:30px;
+	font-size:40px;
+	display:inline-block;
+	height:50px;
+	width:50px;
+	line-height:50px;
+	color:gray;
+}
+.keywordReplyTextMessageMaskDiv_fork:hover,.keywordReplyImageMessageMaskDiv_fork:hover,
+.keywordReplyVideoMessageMaskDiv_fork:hover,.keywordReplyNewsMessageMaskDiv_fork:hover{
+	cursor:pointer;
+}
+
+.saytext{
+	width:700px;
+	outline: none;
+	padding:20px;
+	height:250px;
+	font-size:20px;
+	border:1px solid gray;
+	margin:0 auto;
+	margin-top:50px;
+}
+.keywordReplyTextMessageMaskDiv_confirm,.keywordReplyImageMessageMaskDiv_confirm,
+.keywordReplyVideoMessageMaskDiv_confirm,.keywordReplyNewsMessageMaskDiv_confirm{
+	margin-top:50px;
+	display:inline-block;
+	width:150px;
+	height:50px;
+	line-height:50px;
+	border:1px solid green;
+	border-radius:5px;
+	background-color:green;
+	color:white;
+}
+.keywordReplyTextMessageMaskDiv_confirm:hover,.keywordReplyImageMessageMaskDiv_confirm:hover,
+.keywordReplyVideoMessageMaskDiv_confirm:hover,.keywordReplyNewsMessageMaskDiv_confirm:hover{
+	cursor:pointer;
+	color:#F6F8F9;
+}
+.keywordReplyTextMessageMaskDiv_cancel,.keywordReplyImageMessageMaskDiv_cancel,
+.keywordReplyVideoMessageMaskDiv_cancel,.keywordReplyNewsMessageMaskDiv_cancel{
+	border-radius:5px;
+	margin-top:50x;
+	line-height:50px;
+	display:inline-block;
+	width:150px;
+	height:50px;
+	margin-left:100px;
+	border:1px solid gray;
+}
+.keywordReplyTextMessageMaskDiv_cancel:hover,.keywordReplyImageMessageMaskDiv_cancel:hover,
+.keywordReplyVideoMessageMaskDiv_cancel:hover,.keywordReplyNewsMessageMaskDiv_cancel:hover{
+	cursor:pointer;
+	background-color:#F6F8F9;
+	
+}
+
+.ul_keywordReply_title li,.ul_event_keywordReply_title li{
+	width:100px;
+	height:20px;
+	font-size:12px;
+}
+.ruleDataUl li,.EruleDataUl li{
+	width:100px;
+	height:20px;
+	font-size:12px;
+	overflow:hidden;
+}
+.follow_choose{
+	display:inline-block;
+	height:30px;
+	width:100px;
+	font-size:18px;
+	background-color:gray;
+	line-height:30px;
+	text-align:center;
+	margin-top:30px;
+	color:white;
+	border-radius:5px;
+	
+}
+.follow_choose:hover{
+	background-color:green;
+	color:white;
+	cursor:pointer;
+}
+.follow_text_contain,.follow_mediaId_contain{
+	margin:0 auto;
+	margin-top:30px;
+	width:800px;
+	
+}
+.followTextTextarea{
+	outline:none;
+	resize:none;
+	width:800px;
+	height:250px;
+	padding-left:20px;
+	padding-top:20px;
+	font-size:18px;
+}
+.followMediaIdDiv{
+	text-align:left;
+	border:0.5px solid gray;
+	width:814px;
+	height:271px;
+}
+.event_add_Div{
+	text-align:left;
+	width:937px;
+	height:500px;
+}
+.followSubmit,.eventSubmit{
+	width:600px;
+	margin:0 auto;
+	margin-top:20px;
+	height:50px;
+	background-color:gray;
+	color:white;
+	font-size:20px;
+	height-line:50px;
+	text-align:center;
+}
+
+.followSubmit:hover,.eventSubmit:hover{
+	background-color:green;
+	cursor:pointer;
+}
+
+.keywordReplyImageMessageImageInput,.keywordReplyVideoMessageImageInput,
+.keywordReplyNewsMessageImageInput{
+	width:400px;
+	height:50px;
+	margin-bottom:50px;
+	margin-top:100px;	
+}
+
+.MediaId_follow,.MediaId_event{
+	margin-top:50px;
+	width:600;
+	height:100px;
+	margin-left:100px;
+}
+
+.MediaType_follow,.MediaType_event{
+	
+	width:600;
+	height:100px;
+	margin-left:100px;
+}
+
+.MediaId_follow input{
+	height:50px;
+	width:500px;
+}
+
+.MediaType_follow input{
+	width:20px;
+	height:20px;
+}
+.eventSubmit,.MediaId_event,.MediaType_event{
+	margin-left:200px;
+}
+.MediaId_event, .MediaType_event{
+	margin-top:30px;	
+	height:69px;
+}

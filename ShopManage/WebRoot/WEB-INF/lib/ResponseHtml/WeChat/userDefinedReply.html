@@ -1,0 +1,136 @@
+<div class="bodyer_right_title">自定义回复</div>
+<div class="title_choose_div">
+	<div class="title_keywordReply title_choose" style="color:green;border-bottom:1px solid green;">自定义回复</div>
+	<div class="title_followReply title_choose">被关注回复</div>
+	<div class="title_eventReply title_choose">事件回复</div>
+</div>
+<form action="wechat?event=addKeywordReply" method="post">
+<div class="bodyer_right_external_div">
+	<div class="keywordReply_content keywordReply_list">
+		<input type="text" class="search_input" onfocus='this.style.border="2px solid green";if(this.value=="搜索关键词"){this.value="";this.style.color="black";};' onblur='this.style.border="2px solid #cccccc";if(this.value==""){this.value="搜索关键词";this.style.color="gray";};' value="搜索关键词">
+		<div class="search_button"></div>
+		<div class="div_create_keywordReply">新增回复</div>
+		<div class="div_keywordReply">
+			<ul class="ul_keywordReply_title">
+				<li>规则名称</li>
+				<li>匹配规则</li>
+				<li>关键词</li>
+				<li>回复内容</li>
+			</ul>
+			
+		</div>
+	</div>
+	
+	<div  class="keywordReply_content keywordReplay_create" style="display:none;">
+		<p class="keywordReply_ruleName keywordReplay_createP" >规则名称</p><input type="text" class="keywrodReply_ruleNameInput" name="ruleName">
+		<p class="keywordReply_ruleNameExplain ">规则名最多60个字</p>
+		<p class="keywordReply_keywordP keywordReplay_createP">关键词</p>
+		<select name="match" class="keywordReply_keywordChoose"> 
+			<option value="0">半匹配</option> 
+			<option value="1">全匹配</option> 
+			</select> 
+			<input type="text" class="keywordReply_keywordInput" name="keyword">
+			<br><p class="keywordReplay_createP">回复内容</p>
+				<div class="keywordReply_message keywordReplyNewsMessage">图文消息</div>
+				<div class="keywordReply_message keywordReplyTextMessage">文字消息</div>
+				<div class="keywordReply_message">语音消息</div>
+				<div class="keywordReply_message keywordReplyVideoMessage">视频消息</div>
+				<div class="keywordReply_message keywordReplyImageMessage">图片消息</div>
+				<div class="keywordReply_message">音乐消息</div>
+			<br><input type="submit" value="保存" class="keywordReply_submit keywordReply_save"><div class="keywordReply_submit keywordReply_cancel">取消</div>
+	</div>
+	
+</div>
+<div class="mask"></div>
+<div class="keywordReplyTextMessageMaskDiv">
+	<div class="keywordReplyTextMessageMaskDiv_createWord">添加回复文字</div>
+	<div class="keywordReplyTextMessageMaskDiv_fork">×</div>
+	<textarea class="saytext" name="saytext"></textarea> 
+	<div class="keywordReplyTextMessageMaskDiv_confirm">确认</div><div class="keywordReplyTextMessageMaskDiv_cancel">取消</div>
+</div>
+
+<div class="keywordReplyImageMessageMaskDiv">
+	<div class="keywordReplyImageMessageMaskDiv_createWord">添加回复图片Media_ID</div>
+
+	<div class="keywordReplyImageMessageMaskDiv_fork">×</div>
+	输入图片media_id:	<input type="text" name="imageMediaId" class="keywordReplyImageMessageImageInput"></input>	<br>
+	<div class="keywordReplyImageMessageMaskDiv_confirm">确认</div><div class="keywordReplyImageMessageMaskDiv_cancel">取消</div>
+</div>
+
+<div class="keywordReplyVideoMessageMaskDiv">
+	<div class="keywordReplyVideoMessageMaskDiv_createWord">添加回复视频Media_ID</div>
+
+	<div class="keywordReplyVideoMessageMaskDiv_fork">×</div>
+	输入视频media_id:	<input type="text" name="videoMediaId" class="keywordReplyVideoMessageImageInput"></input>	<br>
+	<div class="keywordReplyVideoMessageMaskDiv_confirm">确认</div><div class="keywordReplyVideoMessageMaskDiv_cancel">取消</div>
+</div>
+
+<div class="keywordReplyNewsMessageMaskDiv">
+	<div class="keywordReplyNewsMessageMaskDiv_createWord">添加回复图文Media_ID</div>
+
+	<div class="keywordReplyNewsMessageMaskDiv_fork">×</div>
+	输入图文media_id:	<input type="text" name="newsMediaId" class="keywordReplyNewsMessageImageInput"></input>	<br>
+	<div class="keywordReplyNewsMessageMaskDiv_confirm">确认</div><div class="keywordReplyNewsMessageMaskDiv_cancel">取消</div>
+</div>
+
+
+</form>
+
+
+<div class="bodyer_right_external_follow_div" style="display:none;">
+	<form method="post" action="wechat?event=followSubscribe">
+		<div class="follow_choose">文字</div>
+		<div class="follow_choose">MediaId</div>
+		<div class="follow_text_contain" style="display:none;">
+			<textarea class="followTextTextarea" name="followTextTextarea" onfocus='this.style.border="1px solid green"' onblur='this.style.border="1px solid #cccccc"'></textarea> 
+		</div>
+		<div class="follow_mediaId_contain" style="display:none;">
+			<div class="followMediaIdDiv">
+			<div class="MediaId_follow"> MediaId：<input type="text" name="followMediaId" class="followMediaId"></input></div>
+			<div class="MediaType_follow">MediaId类型：
+			<label for="newsRadio"><input type="radio" name="mediaType" value="news" id="newsRadio" class="newsInputRadio">图文消息</label>
+			<label for="imageRadio"><input type="radio" name="mediaType" value="image" id="imageRadio" class="imageInputRadio">图片消息</label>
+			<label for="voiceRadio"><input type="radio" name="mediaType" value="voice" id="voiceRadio"  class="voiceInputRadio">音频消息</label>
+			<label for="videoRadio"><input type="radio" name="mediaType" value="video" id="videoRadio" class="videoInputRadio">视频消息</label>
+			</div>
+			</div>
+		</div>
+		<input class="followSubmit" type="submit" value="提交"></input>
+	</form>
+</div> 
+<div class="bodyer_right_external_event_div" style="display:none;">
+
+	<div class="keywordReply_event_content keywordReply_event_list" >
+		<input type="text" class="search_event_input" onfocus='this.style.border="2px solid green";if(this.value=="搜索关键词"){this.value="";this.style.color="black";};' onblur='this.style.border="2px solid #cccccc";if(this.value==""){this.value="搜索关键词";this.style.color="gray";};' value="搜索关键词">
+		<div class="search_event_button"></div>
+		<div class="div_create_event_keywordReply">新增回复</div>
+		<div class="div_event_keywordReply">
+			<ul class="ul_event_keywordReply_title">
+				<li>事件Key值</li>
+				<li>回复类型</li>
+				<li>回复内容</li>
+			</ul>
+			
+		</div>
+	</div>
+</div>
+
+<div class="event_add_Div" style="display:none;font-size:15px;background-color:white;">
+<br>
+	<form action="wechat?event=addevent" method="post">
+		<div class="Efollow_mediaId_contain" >
+			<div class="eventMediaIdDiv">
+			<div class="MediaId_event"> 事件&nbsp;Key：<input type="text" name="eventCode" class="eventCode" style="width:500px;height:50px;"></input></div>
+			<div class="MediaId_event"> MediaId：<input type="text" name="eventMediaId" class="eventMediaId" style="width:500px;height:50px;"></input></div>
+			<div class="MediaType_event">MediaId类型：
+			<label for="newsRadio"><input style="width:20px;height:20px;" type="radio" name="mediaType" value="news" id="newsRadio" class="newsInputRadio">图文消息</label>
+			<label for="imageRadio"><input style="width:20px;height:20px;" type="radio" name="mediaType" value="image" id="imageRadio" class="imageInputRadio">图片消息</label>
+			<label for="voiceRadio"><input style="width:20px;height:20px;" type="radio" name="mediaType" value="voice" id="voiceRadio"  class="voiceInputRadio">音频消息</label>
+			<label for="videoRadio"><input style="width:20px;height:20px;" type="radio" name="mediaType" value="video" id="videoRadio" class="videoInputRadio">视频消息</label>
+			<label for="textRadio"><input style="width:20px;height:20px;" type="radio" name="mediaType" value="text" id="textRadio" class="textInputRadio">文字消息</label>
+			</div>
+			</div>
+		</div>
+		<input class="eventSubmit" type="submit" value="提交"></input>
+	</form>
+</div>

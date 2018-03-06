@@ -1,0 +1,22 @@
+*{
+	padding:0px;
+	margin:0px;
+}
+
+body{
+	text-align:center;
+	
+}
+
+.body_div{
+	width:1000px;
+	height:200px;
+	margin:0 auto;
+	margin-top:200px;
+	font-size:15px;
+}
+
+a{
+	color:black;
+	text-decoration:none;
+}

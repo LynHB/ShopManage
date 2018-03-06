@@ -1,0 +1,6 @@
+USE ShopManage;
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS `WeChatMenu`;
+CREATE TABLE `WeChatMenu` (
+  `Content` varchar(10000)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
