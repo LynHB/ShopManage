@@ -2,6 +2,7 @@ package Lyn.ShopManage.Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONArray;
+
+import Lyn.ShopManage.dao.CollectShopDao;
+import Lyn.ShopManage.dao.CollectStockClassificationDao;
+import Lyn.ShopManage.entity.CollectShop;
+import Lyn.ShopManage.entity.CollectStockClassification;
 import Lyn.ShopManage.util.LogPrintFormat;
 
 public class CollectStockManageServlet extends HttpServlet {
@@ -40,15 +47,33 @@ public class CollectStockManageServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");  
 		HttpSession session = request.getSession();
 		if(session.getAttribute("name")!=null&&session.getAttribute("authority").equals("0")){
-			request.getRequestDispatcher("/CStockManage.jsp").forward(request, response);
+			if(request.getParameter("event")!=null){
+				String event=request.getParameter("event");
+				if(event.equals("getClassification")){
+					getCollectStockClassificationInterface(request,response);
+				}else if(event.equals("insertOneData")){
+					LogPrintFormat.logPrint("Lyn", "收银系统  执行insertIntoStockShop方法");
+					insertIntoStockShop(request, response);
+				}else if(event.equals("getAllShopping")){
+					LogPrintFormat.logPrint("Lyn", "收银系统  执行getAllShopData方法");
+					getAllShopData(request,response);
+				}else{
+					request.getRequestDispatcher("/CStockManage.jsp").forward(request, response);
+				}
+			}else{
+				request.getRequestDispatcher("/CStockManage.jsp").forward(request, response);
+			}
 		}else{
 			LogPrintFormat.logPrint("Lyn", "IP:"+request.getRemoteAddr()+" 非法登陆库存管理");
 			response.sendRedirect(request.getContextPath() + "/sessionInvalid.jsp");
 		}
 	}
+
 
 	/**
 	 * The doPost method of the servlet. <br>
@@ -63,21 +88,73 @@ public class CollectStockManageServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
+		doGet(request,response);
+	}
+	
+	public void getCollectStockClassificationInterface(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		CollectStockClassificationDao classDao=new CollectStockClassificationDao();
+		ArrayList<CollectStockClassification> classificationList=classDao.selectAllData();
+		JSONArray jsonArray=JSONArray.fromObject(classificationList);
+		LogPrintFormat.logPrint("Lyn", "收银系统：ajax 获取分类信息");
+		PrintWriter out=response.getWriter();
+		out.println(jsonArray);
 		out.flush();
 		out.close();
 	}
+	
+	
+	public void insertIntoStockShop(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
+		String cid =request.getParameter("cid");
+		String classification=request.getParameter("classification");
+		String name=request.getParameter("name");
+		String stockBalance=request.getParameter("stockBalance");
+		String averageCost=request.getParameter("averageCost");
+		String marketingPrice=request.getParameter("marketingPrice");
+		String specifications=request.getParameter("specifications");
+		String brand=request.getParameter("brand");
+		String detail=request.getParameter("detail");
+		System.out.println(brand);
+		if(!cid.equals("")&&!classification.equals("")&&!name.equals("")&&!stockBalance.equals("")&&!averageCost.equals("")&&!marketingPrice.equals("")&&!specifications.equals("")&&!brand.equals("")){
+			CollectShop cs=new CollectShop();
+			CollectShopDao csDao=new CollectShopDao();
+			cs.setCid(cid);
+			cs.setClassification(classification);
+			cs.setName(name);
+			cs.setStockBalance(Integer.valueOf(stockBalance));
+			cs.setAverageCost(averageCost);
+			cs.setMarketingPrice(marketingPrice);
+			cs.setSpecifications(specifications);
+			cs.setBrand(brand);
+			cs.setDetail(detail);
+			cs.setStockSell(0);
+			if(csDao.insertOneData(cs)==0){
+				LogPrintFormat.logPrint("Lyn", "收银系统 增加商品成功");
+				request.getRequestDispatcher("/submitSuccess.jsp").forward(request, response);
+			}else{
+				LogPrintFormat.logPrint("Lyn", "收银系统 增加商品失败");
+				request.getRequestDispatcher("/submitError.jsp").forward(request, response);
+			}
+		}else{
+			request.getRequestDispatcher("/submitError.jsp").forward(request, response);
+		}
+			
+		
+	}
 
+	
+	private void getAllShopData(HttpServletRequest request,HttpServletResponse response) throws IOException {
+		CollectShopDao csDao=new CollectShopDao();
+		ArrayList<CollectShop> csList=csDao.selectAllData();
+		JSONArray jsonArray=JSONArray.fromObject(csList);
+		LogPrintFormat.logPrint("Lyn", "收银系统：ajax 获取商品所有数据");
+		PrintWriter out=response.getWriter();
+		out.println(jsonArray);
+		out.flush();
+		out.close();
+		
+		
+	}
+	
 	/**
 	 * Initialization of the servlet. <br>
 	 *

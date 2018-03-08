@@ -25,3 +25,65 @@ $(".my-a").click(function(){
 	$(".my-a").eq(index).attr("class",$(".my-a").eq(index).attr("class")+" my-a-active");
 	$(".my-mainbody").eq(index).fadeIn(1000);
 });
+
+
+//ajax获取分类信息
+$.ajax({
+	  type: 'POST',
+	  url: "CStockManage",
+	  data: "event=getClassification&fresh=" + Math.random(),
+	  //dataType : "json",  
+	  cache:false, 
+	  success: function(data){
+		  var arrayData=eval(data);
+		  var text="";
+		  for(var i=0;i<arrayData.length;i++){
+			  text=text+"<option value=\""+arrayData[i]["id"]+"\">";
+			  text=text+arrayData[i]["name"]+"</option>";
+		  }
+		  
+		  $(".my-select").eq(0).append(text);
+		 
+    },
+    error: function(jqXHR, error, errorThrown) {
+        alert(jqXHR.status);          
+    }
+	  
+});
+
+//ajax获取所有商品信息
+$.ajax({
+	  type: 'POST',
+	  url: "CStockManage",
+	  data: "event=getAllShopping&fresh=" + Math.random(),
+	  //dataType : "json",  
+	  cache:false, 
+	  success: function(data){
+		  var arrayData=eval(data);
+		  console.log(arrayData);
+		  var text="";
+		  for(var i=0;i<arrayData.length;i++){
+			 text=text+"<tr>";
+			 text=text+"<td>"+arrayData[i]["cid"]+"</td>";
+			 text=text+"<td>"+arrayData[i]["name"]+"</td>";
+			 text=text+"<td>"+arrayData[i]["stockBalance"]+"</td>";
+			 text=text+"<td>"+arrayData[i]["stockSell"]+"</td>";
+			 text=text+"<td>"+arrayData[i]["averageCost"]+"</td>";
+			 text=text+"<td>"+arrayData[i]["marketingPrice"]+"</td>";
+			 text=text+"<td>"+arrayData[i]["classification"]+"</td>";
+			 text=text+"<td>"+arrayData[i]["specifications"]+"</td>";
+			 text=text+"<td>"+arrayData[i]["brand"]+"</td>";
+			 text=text+"<td>"+arrayData[i]["detail"]+"</td>";
+			 
+			 
+			 text=text+"</tr>";
+		  }
+		  
+		  $(".my-tbody").eq(0).append(text);
+		 
+  },
+  error: function(jqXHR, error, errorThrown) {
+      alert(jqXHR.status);          
+  }
+	  
+});
