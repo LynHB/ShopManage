@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-sm-3 col-xs-6">
 						<input name="cid" tyle="text" class="form-control" placeholder="请输入商品编号（必填）" id="collectId">
 					</div>	
-					<label for="Classification"class="col-sm-offset-1 col-sm-2 col-xs-5" style="text-align:right;">分类选择：</label>
+					<label for="Classification" class="col-sm-offset-1 col-sm-2 col-xs-5" style="text-align:right;">分类选择：</label>
 					<div class="col-sm-3 col-xs-6">
 						<select class="form-control my-select" id="Classification" name="classification">
 						</select>
@@ -98,19 +98,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</form>
 		</div>
 		<div class="my-mainbody my-body2" >
-			<table class="table table-bordered">
+			<table class="table table-bordered table-hover">
 				<thead>
 					<tr>
-						<th>商品编号</th>
-						<th>商品名称</th>
-						<th>库存余额</th>
-						<th>已售库存</th>
-						<th>成本均价</th>
-						<th>商品售价</th>
-						<th>商品分类</th>
-						<th>规格信息</th>
-						<th>公司厂商</th>
-						<th>附加信息</th>
+						<th class="shopThId">商品编号</th>
+						<th class="shopThName">商品名称</th>
+						<th class="shopThBalance">库存余额</th>
+						<th class="shopThSell">已售库存</th>
+						<th class="shopThCost">成本均价</th>
+						<th class="shopThPrice">商品售价</th>
+						<th class="shopThRate">产品利率</th>
+						<th class="shopThClass">商品分类</th>
+						<th class="shopThSpeci">规格信息</th>
+						<th class="shopThBrand">公司厂商</th>
+						<th class="shopThDetail">附加信息</th>
 					</tr>
 				</thead>
 				<tbody class="my-tbody">
@@ -119,6 +120,76 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 		</div>
 		<div class="my-mainbody my-body3" style="display:none;">3</div>
+	</div>
+	<div class="my-mask" style="z-index:10;background-color:gray;height:100%;width:100%;position:absolute;top:0px;left:0px;opacity:0.8;display:none;"></div>
+	<div class="shopDivMask" >
+		<div style="text-align:center;margin-top:5px;font-size:20px;font-weight:bold;">商品信息筛选</div>
+		<form class="form-horizontal">
+			<div class="form-group" style="margin-top:5px;">
+				<div class="col-sm-offset-1 col-sm-4 col-xs-10 col-xs-offset-1">
+					<input type="text" class="my-mask-id form-control"  placeholder="商品编号">
+				</div>
+			
+				<div class="col-sm-offset-2 col-sm-4 col-xs-10 col-xs-offset-1">
+					<input type="text" class="my-mask-name form-control"  placeholder="商品名称">
+				</div>
+			</div>
+			
+			<div class="form-group" style="margin-top:5px;">
+				<div class="col-sm-offset-1 col-sm-4 col-xs-10 col-xs-offset-1">
+					<input type="text" class="form-control my-mask-brand"  placeholder="公司厂商">
+				</div>
+			
+				<div class="col-sm-offset-2 col-sm-4 col-xs-10 col-xs-offset-1">
+					<input type="text" class="form-control my-mask-detail"  placeholder="附加信息">
+				</div>
+			</div>
+			
+			<div class="form-group" style="margin-top:5px;">
+				<div class="col-sm-offset-1 col-sm-4 col-xs-10 col-xs-offset-1">
+					<select class="my-mask-select-balance  form-control">
+						<option value="1">&gt;</option>
+						<option value="-1">&lt;</option>
+						<option value="0">=</option>
+					</select>
+				</div>
+			
+				<div class="col-sm-offset-2 col-sm-4 col-xs-10 col-xs-offset-1">
+					<input type="text" class="form-control my-mask-balance"  placeholder="库存余额">
+				</div>
+			</div>
+			
+			<div class="form-group" style="margin-top:5px;">
+				<div class="col-sm-offset-1 col-sm-4 col-xs-10 col-xs-offset-1">
+					<select class="form-control my-mask-select-rate">
+						<option value="1">&gt;</option>
+						<option value="-1">&lt;</option>
+						<option value="0">=</option>
+					</select>
+				</div>
+			
+				<div class="col-sm-offset-2 col-sm-4 col-xs-10 col-xs-offset-1">
+					<input type="text" class="form-control my-mask-rate"  placeholder="(销售价-进价)/进价">
+				</div>
+			</div>
+			
+			<div class="form-group" style="margin-top:5px;">
+				<div class="col-sm-offset-1 col-sm-10 col-xs-10 col-xs-offset-1">
+					<select class="form-control my-select my-select-class">
+						<option value="0"></option>
+					</select>
+				</div>
+			
+			</div>
+			
+			<div  class="col-sm-offset-1 col-sm-10 col-xs-10 col-xs-offset-1">
+				<button class="btn btn-success form-control my-mask-confirm" type="button">确定</button>
+			</div>
+			
+			<div class="col-sm-offset-1 col-sm-10 col-xs-10 col-xs-offset-1" style="margin-top:10px;">
+				<button class="btn btn-warning form-control my-mask-cancel" type="button">取消</button>
+			</div>
+		</form>
 	</div>
 	<script src="./js/jquery-3.2.1.js"></script>
 	<script src="./js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
