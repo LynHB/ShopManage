@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import Lyn.ShopManage.dao.CollectShopDao;
 import Lyn.ShopManage.dao.CollectStockClassificationDao;
@@ -62,6 +63,13 @@ public class CollectStockManageServlet extends HttpServlet {
 				}else if(event.equals("getAllShopping")){
 					LogPrintFormat.logPrint("Lyn", "收银系统  执行getAllShopData方法");
 					getAllShopData(request,response);
+				}else if(event.equals("useCidGetShopInfo")){
+					LogPrintFormat.logPrint("Lyn", "收银系统  执行useCidGetShopInfo方法");
+					useCidGetShopInfo(request,response);
+					
+				}else if(event.equals("upDataOneData")){
+					LogPrintFormat.logPrint("Lyn", "收银系统  执行upDataOneData方法");
+					upDataOneData(request,response);
 				}else{
 					request.getRequestDispatcher("/CStockManage.jsp").forward(request, response);
 				}
@@ -74,6 +82,59 @@ public class CollectStockManageServlet extends HttpServlet {
 		}
 	}
 
+
+	private void upDataOneData(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		String primitiveCid=request.getParameter("primitive-cid");
+		String cid =request.getParameter("cid");
+		String classification=request.getParameter("classification");
+		String name=request.getParameter("name");
+		String stockBalance=request.getParameter("stockBalance");
+		String averageCost=request.getParameter("averageCost");
+		String marketingPrice=request.getParameter("marketingPrice");
+		String specifications=request.getParameter("specifications");
+		String brand=request.getParameter("brand");
+		String detail=request.getParameter("detail");
+		if(!primitiveCid.equals("")&&!cid.equals("")&&!classification.equals("")&&!name.equals("")&&!stockBalance.equals("")&&!averageCost.equals("")&&!marketingPrice.equals("")&&!specifications.equals("")&&!brand.equals("")){
+			CollectShop cs=new CollectShop();
+			CollectShopDao csDao=new CollectShopDao();
+			cs.setCid(cid);
+			cs.setClassification(classification);
+			cs.setName(name);
+			cs.setStockBalance(Integer.valueOf(stockBalance));
+			cs.setAverageCost(averageCost);
+			cs.setMarketingPrice(marketingPrice);
+			cs.setSpecifications(specifications);
+			cs.setBrand(brand);
+			cs.setDetail(detail);
+			
+			if(csDao.upDataOneData(cs,primitiveCid)==0){
+				LogPrintFormat.logPrint("Lyn", "收银系统 修改编号"+primitiveCid+"商品成功");
+				request.getRequestDispatcher("/submitSuccess.jsp").forward(request, response);
+			}else{
+				LogPrintFormat.logPrint("Lyn", "收银系统 修改编号"+primitiveCid+"商品失败");
+				request.getRequestDispatcher("/submitError.jsp").forward(request, response);
+			}
+		}else{
+			request.getRequestDispatcher("/submitError.jsp").forward(request, response);
+		}
+		
+	}
+
+	private void useCidGetShopInfo(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		String priCid=request.getParameter("cid");
+		if(!priCid.equals("")){
+			CollectShopDao csDao=new CollectShopDao();
+			CollectShop cs=csDao.useCidGetData(priCid);
+			JSONObject json=JSONObject.fromObject(cs);
+			LogPrintFormat.logPrint("Lyn", "收银系统：ajax 使用CID获取商品信息");
+			PrintWriter out=response.getWriter();
+			out.println(json);
+			out.flush();
+			out.close();
+		}
+		
+	}
 
 	/**
 	 * The doPost method of the servlet. <br>

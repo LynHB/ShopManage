@@ -119,7 +119,83 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tbody>
 			</table>
 		</div>
-		<div class="my-mainbody my-body3" style="display:none;">3</div>
+		<div class="my-mainbody my-body3" style="display:none;">
+			<form  style="padding-top:10px;" class="form-horizontal" action="./CStockManage?event=upDataOneData" method="post">
+				<div class="form-group" style="margin-top:10px;">
+					<div class="col-sm-offset-1 col-sm-4 col-xs-10 col-xs-offset-1">
+						<input type="text" name="primitive-cid" class="form-control select-shop-id" placeholder="请输入商品编号，以便进行修改"> 
+					</div>
+					
+					<div class="col-sm-offset-2 col-sm-4 col-xs-10 col-xs-offset-1" style="text-align:center;">
+						<button type="button" class="btn btn-success  select-shop-button" style="margin:0 auto;">信息查询</button>
+					</div>
+					
+				</div>
+				
+				<div class="alert alert-danger alert-dismissable my-alert-div" style="width:40%;text-align:center;margin:0 auto;display:none;">
+    				<button class="close" type="button" data-dismiss="alert" >&times;</button>  
+    				查询失败，请检查商品编号是否存在
+				</div>
+				
+				<div class="form-group my-form-group">
+					<label for="update-shopId" class="col-sm-2 col-xs-5" style="text-align:right;">商品编号：</label>
+					<div class="col-sm-3 col-xs-6">
+						<input name="cid" tyle="text" class="form-control" placeholder="请输入商品编号（必填）" id="update-shopId">
+					</div>	
+					<label for="update-Classification" class="col-sm-offset-1 col-sm-2 col-xs-5" style="text-align:right;">分类选择：</label>
+					<div class="col-sm-3 col-xs-6">
+						<select class="form-control my-select" id="update-Classification" name="classification">
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group my-form-group">
+					<label for="update-shopName" class="col-sm-2 col-xs-5" style="text-align:right;">商品名称：</label>
+					<div class="col-sm-3 col-xs-6">
+						<input name="name" tyle="text" class="form-control" placeholder="请输入商品名称（必填）" id="update-shopName">
+					</div>
+					
+					<label for="update-StockBalance"class="col-sm-offset-1 col-sm-2 col-xs-5" style="text-align:right;">库存数量：</label>
+					<div class="col-sm-3 col-xs-6">
+						<input name="stockBalance" tyle="text" class="form-control" placeholder="请输入库存数量（必填）" id="update-StockBalance">
+					</div>
+				</div>
+				
+				<div class="form-group my-form-group">
+					<label for="update-averageCost" class="col-sm-2 col-xs-5" style="text-align:right;">成本均价：</label>
+					<div class="col-sm-3 col-xs-6">
+						<input name="averageCost" tyle="text" class="form-control" placeholder="请输入成本均价（必填）" id="update-averageCost">
+					</div>
+					
+					<label for="update-MarketingPrice" class="col-sm-offset-1 col-sm-2 col-xs-5" style="text-align:right;">销售均价：</label>
+					<div class="col-sm-3 col-xs-6">
+						<input name="marketingPrice" tyle="text" class="form-control" placeholder="请输入销售均价（必填）" id="update-MarketingPrice">
+					</div>
+				</div>
+	
+				<div class="form-group my-form-group">
+					<label for="update-Specifications" class="col-sm-2 col-xs-5" style="text-align:right;">参数规格：</label>
+					<div class="col-sm-3 col-xs-6">
+						<input name="specifications" tyle="text" class="form-control" placeholder="请输入规格参数（必填）" id="update-Specifications">
+					</div>
+					
+					<label for="update-Brand" class="col-sm-offset-1 col-sm-2 col-xs-5" style="text-align:right;">厂家名称：</label>
+					<div class="col-sm-3 col-xs-6">
+						<input name="brand" tyle="text" class="form-control" placeholder="请输入厂家名称（必填）" id="update-Brand">
+					</div>
+				
+				</div>
+				
+				<div style="width:100%;text-align:center;">
+					<textarea style="width:80%;margin:0 auto;" name="detail" id="update-detail" placeholder="请输入附加信息（选填）"></textarea>
+				</div>
+				
+				<div style="width:100%;margin-top:3%;text-align:center;">
+					<input style="margin:0 auto;" type="submit" value="确认无误，修改商品信息" class="btn btn-success">
+				</div>
+			</form>
+			
+		</div>
 	</div>
 	<div class="my-mask" style="z-index:10;background-color:gray;height:100%;width:100%;position:absolute;top:0px;left:0px;opacity:0.8;display:none;"></div>
 	<div class="shopDivMask" >
@@ -191,6 +267,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</form>
 	</div>
+	
+	<span class="return-collect" onclick="window.location.href='./collectMoney';return false">返回上一页</span>
 	<script src="./js/jquery-3.2.1.js"></script>
 	<script src="./js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="./js/stockmanage.js"></script>

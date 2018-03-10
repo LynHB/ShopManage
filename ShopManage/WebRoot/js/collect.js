@@ -65,7 +65,9 @@ $(document).on("mousewheel DOMMouseScroll", function (e) {
     	$(".my-photo-content").eq(0).css("-webkit-transform","rotateX(0deg)");
     	
     	//太阳出来东方红！
-    	if($(".my-sun").css("top")=="-270px"){
+    	var sunPri="-"+(windowHeight*0.5-25)+"px";
+ 
+    	if($(".my-sun").css("top")==sunPri){
     		audio.play();
     	}
     	$(".my-sun").css("top","0%");

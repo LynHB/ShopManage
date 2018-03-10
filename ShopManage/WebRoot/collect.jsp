@@ -76,7 +76,7 @@
 			<button class="btn btn-warning my-btn my-btn-stockManage" onclick="window.open('./CStockManage')">库存管理</button>
 			<button class="btn btn-success my-btn my-btn-flowingWater" onclick="window.open('./CFlowingWater')">流水账单</button>
 			<button class="btn btn-primary my-btn my-btn-memberManage" onclick="window.open('./CMemberManage')">会员管理</button>
-			<button class="btn btn-danger my-btn my-btn-returnMenu" onclick="javascrtpt:window.location.href='./menu.jsp'">返回菜单</button>
+			<button class="btn btn-danger my-btn my-btn-returnMenu" onclick="javascrtpt:window.location.href='./menu?type=menu'">返回菜单</button>
 		</div>
 	</div>
 		<div class="modal fade" id="mymodal">

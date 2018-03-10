@@ -29,6 +29,72 @@ public class CollectShopDao {
 		System.out.println(csDao.insertOneData(cs));
 	}
 	
+	
+	public int upDataOneData(CollectShop cs,String cid){
+		Connection conn=MysqlUtil.getConnection();
+		String sql="UPDATE CollectStockManage "+
+				"SET Cid=?,Name=?,StockBalance=?,AverageCost=?,MarketingPrice=?,Classification=?,Specifications=?,Brand=?,Detail=? "+
+				"WHERE Cid=?;";
+		PreparedStatement ptmt=null;
+		try {
+			ptmt = conn.prepareStatement(sql);
+			ptmt.setString(1,cs.getCid());
+			ptmt.setString(2, cs.getName());
+			ptmt.setInt(3, cs.getStockBalance());
+			ptmt.setString(4, cs.getAverageCost());
+			ptmt.setString(5, cs.getMarketingPrice());
+			ptmt.setString(6, cs.getClassification());
+			ptmt.setString(7, cs.getSpecifications());
+			ptmt.setString(8, cs.getBrand());
+			ptmt.setString(9, cs.getDetail());
+			ptmt.setString(10, cid);
+			ptmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return 1;
+		}
+		
+		return 0;
+	}
+	
+	
+	
+	public CollectShop useCidGetData(String cid){
+		Connection conn=MysqlUtil.getConnection();
+		String sql="SELECT * FROM CollectStockManage WHERE Cid=\""+cid+"\" LIMIT 1;";
+		Statement stmt=null;
+		ResultSet rs=null;
+		CollectShop cs=new CollectShop();
+		try {
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			while(rs.next()){
+				cs.setCid(rs.getString("Cid"));
+				cs.setName(rs.getString("Name"));
+				cs.setStockBalance(rs.getInt("StockBalance"));
+				cs.setStockSell(rs.getInt("StockSell"));
+				cs.setAverageCost(rs.getString("AverageCost"));
+				cs.setMarketingPrice(rs.getString("MarketingPrice"));
+				cs.setClassification(rs.getString("Classification"));
+				cs.setSpecifications(rs.getString("Specifications"));
+				cs.setBrand(rs.getString("Brand"));
+				cs.setDetail(rs.getString("Detail"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			stmt=null;
+			rs=null;
+			conn=null;
+		}
+		
+		return cs;
+	}
+	
+	
 	public ArrayList<CollectShop> selectAllData(){
 		Connection conn=MysqlUtil.getConnection();
 		String sql="SELECT * FROM CollectStockManage";
@@ -100,4 +166,7 @@ public class CollectShopDao {
 		LogPrintFormat.logPrint("Lyn", "执行CollectShopDao类方法insertOneData()");
 		return 0;
 	}
+
+
+	
 }

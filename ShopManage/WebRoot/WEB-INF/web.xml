@@ -138,7 +138,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>CollectMemberManageServlet</servlet-name>
-    <url-pattern>/servlet/CMemberManage</url-pattern>
+    <url-pattern>/CMemberManage</url-pattern>
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

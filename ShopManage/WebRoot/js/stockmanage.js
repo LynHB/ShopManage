@@ -15,6 +15,7 @@ function completeLoading() {
 
 
 $(document).ready(function(){
+	$(".my-container").eq(0).fadeIn(5000);
 });
 
 
@@ -497,4 +498,36 @@ $(".my-mask-confirm").eq(0).click(function(){
 	$(".my-tbody").eq(0).html(text);
 	//对表格进行渲染
 	shopRendering();
+});
+
+$(".select-shop-button").eq(0).click(function(){
+	$.ajax({
+		  type: 'POST',
+		  url: "CStockManage",
+		  data: "event=useCidGetShopInfo&fresh=" + Math.random()+"&cid="+$(".select-shop-id").eq(0).val(),
+		  dataType : "json",  
+		  cache:false, 
+		  success: function(data){
+			  var tmpData=eval(data);
+			  console.log(tmpData);
+			  if(tmpData["cid"]==""){
+				  $(".my-alert-div").eq(0).fadeIn(1000);
+			  }else{
+				  $("#update-shopId").val(tmpData["cid"]);
+				  $("#update-Classification").val(tmpData["classification"]);
+				  $("#update-StockBalance").val(tmpData["stockBalance"]);
+				  $("#update-averageCost").val(tmpData["averageCost"]);
+				  $("#update-shopName").val(tmpData["name"]);
+				  $("#update-MarketingPrice").val(tmpData["marketingPrice"]);
+				  $("#update-Specifications").val(tmpData["specifications"]);
+				  $("#update-Brand").val(tmpData["brand"]);
+				  $("#update-detail").val(tmpData["detail"]);
+			  }
+			 
+	  },
+	  error: function(jqXHR, error, errorThrown) {
+	      alert(jqXHR.status);          
+	  }
+		  
+	});
 });
