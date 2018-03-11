@@ -57,12 +57,12 @@ import Lyn.ShopManage.entity.WeChatViewButton;
 import Lyn.ShopManage.entity.WeChatVoiceSourceMaterial;
 
 public class WeChatUtil {
-	//private static final String APPID="wxf18136a87dee4730";
+	private static final String APPID="wxf18136a87dee4730";
 	//private static final String APPID = "wxecbeb7a6e241455a";
-	private static final String APPID = "wxa32e9d3765d99ff4";
-	//private static final String APPSECRET="cc133b5da47e3b9e7f5d022b2a4e0b25";
+	//private static final String APPID = "wxa32e9d3765d99ff4";
+	private static final String APPSECRET="cc133b5da47e3b9e7f5d022b2a4e0b25";
 	//private static final String APPSECRET = "697275a4f2023a7c1160fed8fec36c3e";
-	private static final String APPSECRET="800daa2ff3e9ce18c636cfdf0ff3969d";
+	//private static final String APPSECRET="800daa2ff3e9ce18c636cfdf0ff3969d";
 	private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 	private static final String UPLOAD_URL = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";
 	private static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";

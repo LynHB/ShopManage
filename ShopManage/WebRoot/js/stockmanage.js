@@ -15,7 +15,7 @@ function completeLoading() {
 
 
 $(document).ready(function(){
-	$(".my-container").eq(0).fadeIn(5000);
+	$(".my-container").eq(0).fadeIn(3000);
 });
 
 
@@ -114,7 +114,7 @@ $.ajax({
 });
 
 
-$(document).on("click",".shopTrData",function(){
+$(document).on("click",".shopThId",function(){
 	$(".my-mask").eq(0).css("display","block");
 	$(".shopDivMask").eq(0).fadeIn(1000);	
 });
