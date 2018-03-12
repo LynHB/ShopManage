@@ -2,6 +2,7 @@ package Lyn.ShopManage.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -16,53 +17,47 @@ import Lyn.ShopManage.util.MysqlUtil;
 public class CollectMemberManageDao {
 	
 	public static void main(String[] args) {
+		CollectMemberManage cmm=new CollectMemberManage();
+		cmm.setUserId("18039863649");
+		cmm.setAddress("西门村");
+		cmm.setCreateTime(String.valueOf(Calendar.getInstance().getTimeInMillis()));
+		cmm.setUpdateTime(String.valueOf(Calendar.getInstance().getTimeInMillis()));
+		cmm.setDetail("无");
+		cmm.setIntegral(100000);
+		cmm.setUserName("黄");
+		
+		ArrayList<CollectMemberChild> childList=new ArrayList<CollectMemberChild>();
 		CollectMemberChild cmc1=new CollectMemberChild();
 		CollectMemberChild cmc2=new CollectMemberChild();
-		ArrayList<CollectMemberChild> cmcList=new ArrayList<CollectMemberChild>();
-		CollectMemberManage cmm=new CollectMemberManage();
-		CollectMemberChildDao cmcDao=new CollectMemberChildDao();
-		CollectMemberManageDao cmmDao=new CollectMemberManageDao();
-		cmm.setUserId("18039863649");
-		cmm.setUserName("黄");
-		String childId1=String.valueOf(Calendar.getInstance().getTimeInMillis());
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String childId2=String.valueOf(Calendar.getInstance().getTimeInMillis());
-		cmm.setUserChildId(childId1+" "+childId2);
-		cmm.setAddress("西门村");
-		cmm.setIntegral(10000);
-		cmm.setCreateTime(childId1);
-		cmm.setUpdateTime(childId1);
+		String time1=String.valueOf(Calendar.getInstance().getTimeInMillis())+String.valueOf((int)((Math.random()*9+1)*100000));
+		String time2=String.valueOf(Calendar.getInstance().getTimeInMillis())+String.valueOf((int)((Math.random()*9+1)*100000));
 		
-		cmc1.setBirthday("2017-01-01");
-		cmc1.setChilderId(childId1);
-		cmc1.setCreateTime(childId1);
-		cmc1.setSex(1);
-		cmc1.setUpdateTime(childId1);
-		cmc1.setUserId(cmm.getUserId());
+		cmc1.setChilderId(time1);
+		cmc1.setBirthday("2017-01-02");
+		cmc1.setChildName("西瓜");
+		cmc1.setCreateTime(String.valueOf(Calendar.getInstance().getTimeInMillis()));
+		cmc1.setUpdateTime(String.valueOf(Calendar.getInstance().getTimeInMillis()));
+		cmc1.setSex(0);
+		cmc1.setUserId("18039863649");
 		
-		cmc2.setBirthday("2017-01-01");
-		cmc2.setChilderId(childId2);
-		cmc2.setCreateTime(childId2);
+		cmc2.setChilderId(time2);
+		cmc2.setBirthday("2017-01-03");
+		cmc2.setChildName("饺子");
+		cmc2.setCreateTime(String.valueOf(Calendar.getInstance().getTimeInMillis()));
+		cmc2.setUpdateTime(String.valueOf(Calendar.getInstance().getTimeInMillis()));
 		cmc2.setSex(1);
-		cmc2.setUpdateTime(childId2);
-		cmc2.setUserId(cmm.getUserId());
-		cmcList.add(cmc1);
-		cmcList.add(cmc2);
-		cmm.setChilden(cmcList);
+		cmc2.setUserId("18039863649");
+		
+		childList.add(cmc1);
+		childList.add(cmc2);
+		cmm.setChilden(childList);
+		cmm.setUserChildId(cmc1.getChilderId()+" "+cmc2.getChilderId());
+		cmm.setUserChildName(cmc1.getChildName()+" "+cmc2.getChildName());
+		CollectMemberManageDao cmmDao=new CollectMemberManageDao();
 		cmmDao.insertOneData(cmm);
-		Iterator it =cmcList.iterator();
-		while(it.hasNext()){
-			CollectMemberChild tmp=(CollectMemberChild) it.next();
-			cmcDao.insertChildenData(tmp);
-			
-		}
-		
-		
+		CollectMemberChildDao cmcDao=new CollectMemberChildDao();
+		cmcDao.insertChildenData(cmc1);
+		cmcDao.insertChildenData(cmc2);
 		
 	}
 	
@@ -98,5 +93,53 @@ public class CollectMemberManageDao {
 		LogPrintFormat.logPrint("Lyn", "CollectMemberManageDao类使用insertOneData方法执行成功，id"+cmm.getUserId()+"添加成功。");
 		return 0;
 		
+	}
+	
+	public ArrayList<CollectMemberManage> selectAllData(){
+		Connection conn=MysqlUtil.getConnection();
+		Statement stmt=null;
+		String sql="SELECT * FROM CollectMemberManage";
+		ArrayList<CollectMemberManage> cmmList=new ArrayList<CollectMemberManage>();
+		try {
+			stmt=conn.createStatement();
+			ResultSet rs=stmt.executeQuery(sql);
+			while(rs.next()){
+				CollectMemberManage cmm=new CollectMemberManage();
+				cmm.setUserId(rs.getString("UserId"));
+				cmm.setUserName(rs.getString("UserName"));
+				cmm.setUserChildId(rs.getString("UserChildId"));
+				cmm.setAddress(rs.getString("Address"));
+				cmm.setIntegral(rs.getInt("Integral"));
+				cmm.setUpdateTime(rs.getString("UpdateTime"));
+				cmm.setCreateTime(rs.getString("CreateTime"));
+				cmm.setDetail(rs.getString("Detail"));
+				cmmList.add(cmm);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			stmt=null;
+			conn=null;
+		}
+		
+		ArrayList<CollectMemberManage> cmmList2=new ArrayList<CollectMemberManage>();
+		Iterator it=cmmList.iterator();
+		CollectMemberChildDao childDao=new CollectMemberChildDao();
+		while(it.hasNext()){
+			CollectMemberManage cmm=(CollectMemberManage) it.next();
+			ArrayList<CollectMemberChild> childList=new ArrayList<CollectMemberChild>();
+			String[] array=cmm.getUserChildId().split(" ");
+			for(int i=0;i<array.length;i++){
+				String id=array[i];
+				CollectMemberChild cmc=childDao.useCidGetCInfo(id);
+				childList.add(cmc);
+			}
+			cmm.setChilden(childList);
+			cmmList2.add(cmm);
+		}
+		LogPrintFormat.logPrint("Lyn", "CollectMemberManageDao类使用selectAllData方法执行成功");
+		return cmmList2;
 	}
 }

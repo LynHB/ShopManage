@@ -39,3 +39,42 @@ $(".my-a").click(function(){
 	$(".my-a").eq(index).attr("class",$(".my-a").eq(index).attr("class")+" my-a-active");
 	$(".my-mainbody").eq(index).fadeIn(1000);
 });
+
+var memberData=new Array();
+//ajax获取会员信息
+$.ajax({
+	  type: 'POST',
+	  url: "CMemberManage",
+	  data: "event=getAllMemberInfo&fresh=" + Math.random(),
+	  //dataType : "json",  
+	  cache:false, 
+	  success: function(data){
+		  memberData=eval(data);
+		  var text="";
+		  console.log(memberData);
+		  for(var i=0;i<memberData.length;i++){
+			 text=text+"<tr class=\"memTrData\">";
+			 text=text+"<td class=\"memTdId\">"+memberData[i]["userId"]+"</td>";
+			 text=text+"<td class=\"memTdName\">"+memberData[i]["userName"]+"</td>";
+			 var childName="";
+			 for(var jz=0;jz<memberData[i]["childen"].length;jz++){
+				 childName=childName+" "+memberData[i]["childen"][jz]["childName"];
+			 }
+			 console.log(childName);
+			 text=text+"<td class=\"memTdChildName\">"+childName.trim()+"</td>";
+			 text=text+"<td class=\"memTdIntegral\">"+memberData[i]["integral"]+"</td>";
+			 text=text+"<td class=\"memTdAddress\">"+memberData[i]["address"]+"</td>";
+			 text=text+"<td class=\"memTdDetail\">"+memberData[i]["detail"]+"</td>";
+			 text=text+"<td class=\"memTdUpdateTime\">"+ new Date(memberData[i]["updateTime"]*1).toLocaleDateString()+"</td>";
+			 text=text+"<td class=\"memTdCreateTime\">"+ new Date(memberData[i]["createTime"]*1).toLocaleDateString()+"</td>";
+			 text=text+"</tr>";
+			 
+		  }
+		  $(".my-tbody").eq(0).append(text);
+		 
+    },
+    error: function(jqXHR, error, errorThrown) {
+        alert(jqXHR.status);          
+    }
+	  
+});

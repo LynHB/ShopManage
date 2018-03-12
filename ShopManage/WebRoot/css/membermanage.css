@@ -101,7 +101,7 @@ td:hover,th:hover{
 
 @media screen and (max-width:500px){
 	.my-container{
-		display:none;
+		display:none !important;
 	}
 	.return-collect{
 		display:none;

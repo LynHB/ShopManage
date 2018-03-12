@@ -7,5 +7,7 @@ CREATE TABLE `CollectMemberChild` (
   `Sex` int NOT NULL,
   `CreateTime` varchar(255) NOT NULL,
   `UpdateTime` varchar(255) NOT NULL,
-  `UserId` varchar(255) NOT NULL
+  `UserId` varchar(255) NOT NULL,
+  `ChildName` varchar(255) NOT NULL
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

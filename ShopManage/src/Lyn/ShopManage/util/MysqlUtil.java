@@ -10,7 +10,7 @@ import Lyn.ShopManage.dao.AccountDao;
 
 
 public class MysqlUtil {
-//	private static final String URL="jdbc:mysql://127.0.0.1:3306/IMOCC_TEST?useUnicode=true&characterEncoding=utf8";
+//	private static final String URL="jdbc:mysql://127.0.0.1:3306/IMOCC_TEST?autoReconnect=true&useUnicode=true&characterEncoding=utf8";
 //	private static final String USER="root";
 //	private static final String PASSWORD="123456";
 	private static  String URL;
