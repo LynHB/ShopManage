@@ -108,6 +108,7 @@ public class CollectStockManageServlet extends HttpServlet {
 			cs.setDetail(detail);
 			
 			if(csDao.upDataOneData(cs,primitiveCid)==0){
+				request.setAttribute("returnSuccessPage", "\"./CStockManage\"");
 				LogPrintFormat.logPrint("Lyn", "收银系统 修改编号"+primitiveCid+"商品成功");
 				request.getRequestDispatcher("/submitSuccess.jsp").forward(request, response);
 			}else{
@@ -190,6 +191,7 @@ public class CollectStockManageServlet extends HttpServlet {
 			cs.setStockSell(0);
 			if(csDao.insertOneData(cs)==0){
 				LogPrintFormat.logPrint("Lyn", "收银系统 增加商品成功");
+				request.setAttribute("returnSuccessPage", "\"./CStockManage\"");
 				request.getRequestDispatcher("/submitSuccess.jsp").forward(request, response);
 			}else{
 				LogPrintFormat.logPrint("Lyn", "收银系统 增加商品失败");

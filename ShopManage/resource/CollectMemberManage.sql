@@ -7,6 +7,7 @@ CREATE TABLE `CollectMemberManage` (
   `UserChildId` varchar(255) NOT NULL,
   `Address` varchar(255),
   `Integral` int NOT NULL,
+  `IntegralTotal` int NOT NULL,
   `CreateTime` varchar(255) NOT NULL,
   `UpdateTime` varchar(255) NOT NULL,
   `Detail` text

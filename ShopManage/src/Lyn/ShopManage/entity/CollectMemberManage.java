@@ -9,12 +9,19 @@ public class CollectMemberManage {
 	private String userChildId;
 	private String address;
 	private int integral;
+	private int integralTotal;
 	private String createTime;
 	private String updateTime;
 	private String detail;
 	private ArrayList<CollectMemberChild> childen;
 	
 	
+	public int getIntegralTotal() {
+		return integralTotal;
+	}
+	public void setIntegralTotal(int integralTotal) {
+		this.integralTotal = integralTotal;
+	}
 	public ArrayList<CollectMemberChild> getChilden() {
 		return childen;
 	}

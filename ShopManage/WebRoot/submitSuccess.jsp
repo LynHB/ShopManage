@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
   <script type="text/javascript">
   document.getElementsByClassName("errorReturn")[0].onclick=function(){
-	window.location.href = "./CStockManage";  
+	window.location.href = ${returnSuccessPage};  
 }
 
 	delayURL();      
@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			document.getElementById("time").innerHTML = delay;  
 		} else {  
 			clearTimeout(t);   
-			window.location.href = "./CStockManage";  
+			window.location.href = ${returnSuccessPage};  
         }          
     }   
   </script>

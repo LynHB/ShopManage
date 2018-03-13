@@ -271,6 +271,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<span class="return-collect" onclick="window.location.href='./collectMoney';return false">返回上一页</span>
 	<script src="./js/jquery-3.2.1.js"></script>
 	<script src="./js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/pinyinjs/dict/pinyin_dict_notone.js"></script>
+	<script type="text/javascript" src="./js/pinyinjs/dict/pinyin_dict_withtone.js"></script>
+	<script type="text/javascript" src="./js/pinyinjs/pinyinUtil.js"></script>
+	<script type="text/javascript" src="./js/pinyinjs/simple-input-method/simple-input-method.js"></script>
 	<script src="./js/stockmanage.js"></script>
   </body>
 </html>
