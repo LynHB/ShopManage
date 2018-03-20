@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Lyn.ShopManage.dao.CollectFlowWaterDao;
+import Lyn.ShopManage.dao.CollectShopDao;
 import Lyn.ShopManage.util.LogPrintFormat;
 
 public class MenuServlet extends HttpServlet {
@@ -68,6 +70,17 @@ public class MenuServlet extends HttpServlet {
 			request.setAttribute("sessionPhone",session.getAttribute("phoneId"));
 			request.setAttribute("sessionE_mail",session.getAttribute("E_mail"));
 			request.setAttribute("sessionAccountId",session.getAttribute("accountId"));
+			
+			CollectShopDao csDao=new CollectShopDao();
+			CollectFlowWaterDao cfwDao=new CollectFlowWaterDao();
+			String stockNum=csDao.getStockNum();
+			String stockMoney=csDao.getStockMoney();
+			String getSellNum=csDao.getSellNum();
+			String totalMoney=cfwDao.totalMoney();
+			request.setAttribute("stockNum",stockNum);
+			request.setAttribute("stockMoney",stockMoney);
+			request.setAttribute("sellNum",getSellNum);
+			request.setAttribute("sellMoney", totalMoney);
 			request.setAttribute("title","我的首页");
 			LogPrintFormat.logPrint("Lyn", "用户:"+session.getAttribute("name")+" 登陆个人主页");
 			request.getRequestDispatcher("/menu.jsp").forward(request, response);

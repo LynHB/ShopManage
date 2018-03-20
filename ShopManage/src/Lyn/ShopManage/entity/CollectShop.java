@@ -1,10 +1,11 @@
 package Lyn.ShopManage.entity;
 
-import sun.security.util.BigInt;
+import java.math.BigInteger;
+
 
 public class CollectShop {
 	private String cid;
-	private BigInt sid;
+	private BigInteger sid;
 	private String Name;
 	private int stockBalance;
 	private int stockSell;
@@ -22,10 +23,10 @@ public class CollectShop {
 	public void setCid(String cid) {
 		this.cid = cid;
 	}
-	public BigInt getSid() {
+	public BigInteger getSid() {
 		return sid;
 	}
-	public void setSid(BigInt sid) {
+	public void setSid(BigInteger sid) {
 		this.sid = sid;
 	}
 	public String getName() {

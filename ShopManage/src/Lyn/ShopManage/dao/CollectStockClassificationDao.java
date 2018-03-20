@@ -41,6 +41,30 @@ public class CollectStockClassificationDao {
 		
 	}
 	
+	public String useIdGetIntegral(int id){
+		Connection conn=MysqlUtil.getConnection();
+		String sql="SELECT Integral FROM CollectStockClassification WHERE ClassId="+id;
+		Statement stmt=null;
+		ResultSet rs=null;
+		String integral="";
+		try {
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			while(rs.next()){
+				integral=rs.getString("Integral");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			stmt=null;
+			rs=null;
+			conn=null;
+			
+		}
+		return integral;
+		
+	}
 	
 	public ArrayList<CollectStockClassification> selectAllData(){
 		Connection conn=MysqlUtil.getConnection();

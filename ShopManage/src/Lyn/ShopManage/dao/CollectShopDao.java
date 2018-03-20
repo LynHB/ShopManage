@@ -1,6 +1,5 @@
 package Lyn.ShopManage.dao;
 
-import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -59,8 +58,96 @@ public class CollectShopDao {
 		return 0;
 	}
 	
+	public int upDataBalance(String cid,int balance,int stockSell){
+		Connection conn=MysqlUtil.getConnection();
+		String sql="UPDATE CollectStockManage "+
+				"SET StockBalance=?, StockSell=? "+
+				"WHERE Cid=?;";
+		PreparedStatement ptmt=null;
+		try {
+			ptmt = conn.prepareStatement(sql);
+			ptmt.setInt(1, balance);
+			ptmt.setInt(2, stockSell);
+			ptmt.setString(3, cid);
+			ptmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			return 1;
+		}
+		
+		return 0;
+	}
 	
+	public String getStockNum(){
+		Connection conn=MysqlUtil.getConnection();
+		String sql ="SELECT sum(StockBalance) sum FROM CollectStockManage;";
+		Statement stmt=null;
+		ResultSet rs=null;
+		String result="";
+		try {
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			while(rs.next()){
+				result=rs.getString("sum");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			conn=null;
+			stmt=null;
+		}
+		
+		return result;
+	}
 	
+	public String getStockMoney(){
+		Connection conn=MysqlUtil.getConnection();
+		String sql ="SELECT SUM(StockBalance*AverageCost) totalMoney FROM CollectStockManage;";
+		Statement stmt=null;
+		ResultSet rs=null;
+		String result="";
+		try {
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			while(rs.next()){
+				result=rs.getString("totalMoney");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			conn=null;
+			stmt=null;
+		}
+		
+		return result;
+	}
+	
+	public String getSellNum(){
+		Connection conn=MysqlUtil.getConnection();
+		String sql ="SELECT SUM(StockSell) sellNum FROM CollectStockManage;";
+		Statement stmt=null;
+		ResultSet rs=null;
+		String result="";
+		try {
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			while(rs.next()){
+				result=rs.getString("sellNum");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			conn=null;
+			stmt=null;
+		}
+		
+		return result;
+	}
 	public CollectShop useCidGetData(String cid){
 		Connection conn=MysqlUtil.getConnection();
 		String sql="SELECT * FROM CollectStockManage WHERE Cid=\""+cid+"\" LIMIT 1;";

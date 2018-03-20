@@ -97,6 +97,33 @@ public class CollectMemberManageDao {
 		return 0;
 	}
 	
+	public int updateInegral(String id, int integral,int integralTotal){
+		Connection conn =MysqlUtil.getConnection();
+		String sql ="UPDATE CollectMemberManage "+
+				"SET Integral=?,IntegralTotal=? "+
+				"WHERE UserId=?";
+		PreparedStatement ptmt=null;
+		try {
+			ptmt=conn.prepareStatement(sql);
+			
+			ptmt.setInt(1, integral);
+			ptmt.setInt(2, integralTotal);
+			ptmt.setString(3, id);
+			ptmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			LogPrintFormat.logPrint("Lyn", "CollectMemberManageDao类使用updateInegral方法执行失败，id："+id+"修改失败。");
+			return 1;
+		}finally{
+			ptmt=null;
+			conn=null;
+		}
+		LogPrintFormat.logPrint("Lyn", "CollectMemberManageDao类使用updateInegral方法执行成功，id："+id+"修改成功。");
+		return 0;
+	}
+	
 	public int insertOneData(CollectMemberManage cmm){
 		Connection conn=MysqlUtil.getConnection();
 		String sql="INSERT INTO CollectMemberManage(UserId,UserName,UserChildId,Address,Integral,CreateTime,UpdateTime,Detail,IntegralTotal) "+

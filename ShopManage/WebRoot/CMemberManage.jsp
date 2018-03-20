@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <div class="my-header"></div>
+    <div class="my-header" style="width:100%"></div>
     <div class="my-container container">
     	<div class="my-top">
 			<div class="my-row row">

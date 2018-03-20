@@ -61,8 +61,12 @@ public class CollectStockManageServlet extends HttpServlet {
 					LogPrintFormat.logPrint("Lyn", "收银系统  执行insertIntoStockShop方法");
 					insertIntoStockShop(request, response);
 				}else if(event.equals("getAllShopping")){
-					LogPrintFormat.logPrint("Lyn", "收银系统  执行getAllShopData方法");
-					getAllShopData(request,response);
+					try{
+						LogPrintFormat.logPrint("Lyn", "收银系统  执行getAllShopData方法");
+						getAllShopData(request,response);
+					}catch(Exception ex){
+						ex.printStackTrace();
+					}
 				}else if(event.equals("useCidGetShopInfo")){
 					LogPrintFormat.logPrint("Lyn", "收银系统  执行useCidGetShopInfo方法");
 					useCidGetShopInfo(request,response);
@@ -206,14 +210,18 @@ public class CollectStockManageServlet extends HttpServlet {
 
 	
 	private void getAllShopData(HttpServletRequest request,HttpServletResponse response) throws IOException {
-		CollectShopDao csDao=new CollectShopDao();
-		ArrayList<CollectShop> csList=csDao.selectAllData();
-		JSONArray jsonArray=JSONArray.fromObject(csList);
-		LogPrintFormat.logPrint("Lyn", "收银系统：ajax 获取商品所有数据");
-		PrintWriter out=response.getWriter();
-		out.println(jsonArray);
-		out.flush();
-		out.close();
+		try{
+			CollectShopDao csDao=new CollectShopDao();
+			ArrayList<CollectShop> csList=csDao.selectAllData();
+			JSONArray jsonArray=JSONArray.fromObject(csList);
+			LogPrintFormat.logPrint("Lyn", "收银系统：ajax 获取商品所有数据");
+			PrintWriter out=response.getWriter();
+			out.println(jsonArray);
+			out.flush();
+			out.close();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 		
 		
 	}

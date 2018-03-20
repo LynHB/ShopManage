@@ -96,16 +96,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="bodyer_content_center bodyer_content_wechat">
 				<span class="bodyer_content_span_link"><a href="collectMoney">操作更多请点击</a></span>
 				<div>商品库存数
-					<p></p>
+					<p>${stockNum}件</p>
 				</div>
 				<div>库存总资产
-					<p></p>
+					<p>${stockMoney}人民币</p>
 				</div>
 				<div>已卖出商品个数
-					<p></p>
+					<p>${sellNum}件</p>
 				</div>
-				<div>卖出所得资产
-					<p></p>
+				<div>总销量
+					<p>${sellMoney}人民币</p>
 				</div>
 			</div>
 			<div class="bodyer_content_right"><div>编辑</div></div>
